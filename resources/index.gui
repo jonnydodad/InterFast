@@ -1,0 +1,117 @@
+<svg class="background">
+  
+  
+  <g id="settingPage">
+    <image class="clock" width="60%" height="82%" href="clock-face.png" x="71" y="23"/>
+    
+    <animate attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+    <animate attributeName="opacity" begin="disable" from="0" to="1" dur="1" final="keep" />
+
+    <text font-size='28' fill="red" x="140" y="88">Start</text>
+    <text id="startText" font-family='Fabrikat-Bold' fill="red" x="134" y="115">00:00</text>
+    <text id="endText"   font-family='Fabrikat-Bold' fill="red" x="134" y="155">08:00</text>
+    <text font-size='28' fill="red" x="148" y="180">End</text>
+
+    <arc id="otherarc" pointer-events="visible" x="60" y="10" width="230" height="230" fill="blue"
+    arc-width="20" start-angle="0" sweep-angle="360" />
+    <arc id="eatarc" pointer-events="visible" x="60" y="10" width="230" height="230" fill="#67e55d"
+    arc-width="20" start-angle="0" sweep-angle="120" />
+  </g>
+  
+  <g id="clockPage">
+    <animate attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+    <animate attributeName="opacity" begin="disable" from="0" to="1" dur="1" final="keep" />
+    <use id="container" href="#panoramaview">
+      <use id="item1" href="#panoramaview-item">   
+        <image class="clock" width="60%" height="82%" href="clock-face.png" x="71" y="23"/>
+        <arc id="arc-fast-setting" x="60" y="10" width="230" height="230" opacity=".5" fill="#B22222"
+           arc-width="20" start-angle="0" sweep-angle="360" />
+        <arc id="arc-eat-setting" x="60" y="10" width="230" height="230" opacity=".5" fill="#4B0082"
+           arc-width="20" start-angle="0" sweep-angle="0" />
+        <arc id="arc-fast-live" x="60" y="10" width="230" height="230" fill="fb-magenta"
+           arc-width="20" start-angle="0" sweep-angle="0" />
+        <arc id="arc-eat-live"x="60" y="10" width="230" height="230" fill="#6EOECE"
+           arc-width="20" start-angle="0" sweep-angle="0" />
+
+        <arc id="arc-seconds" x="55" y="5" width="240" height="240" fill="#00D14C" 
+         arc-width="2" start-angle="0" sweep-angle="6" />
+        
+        <g id="hand-mins" pointer-events="visible" transform="translate(50%,50%)">
+          <rect x="$-4" y="-110" width="6" height="114" fill="white" />
+          <rect x="$-4" y="-110" width="4" height="110" fill="#1BA6F7" />
+        </g>
+        <g id="hand-hours" pointer-events="visible" transform="translate(50%,50%)">
+          <rect x="$-6" y="-75" width="6" height="76" fill="white"/>
+          <rect x="$-6" y="-75" width="3" height="73" fill="#1BA6F7"/>
+        </g>
+        <g id="hand-circle">
+          <circle cx="174" cy="124" r="7" fill="#1BA6F7"/>
+        </g>
+      </use>
+      
+      <use id="item2" href="#panoramaview-item">
+        <text x="10%" y="90" font-size='33' fill="fb-white" font-family='Fabrikat-Bold'>Fasting for:</text>
+        <svg x="5%" y="39%" height="75" width="90%"> 
+          <!-- toggle button 8hrs -->
+          <use id="btn-8hr" href="#square-button-toggle" value="1" fill="fb-magenta" font-family='Fabrikat-Bold'>
+            <text x="30%" font-size='30' fill="fb-white" opacity="1">16 hrs</text>
+          </use>
+          <!-- toggle button 11hrs -->
+          <use id="btn-11hr" href="#square-button-toggle" x="50%" fill="fb-magenta" font-family='Fabrikat-Bold'>
+            <text x="30%" font-size='30' fill="fb-white" opacity="1">13 hrs</text>
+          </use>
+        </svg>
+      </use>
+      <!-- Have enough pagination dots for your slides (extras are hidden) -->
+      <use id="pagination-dots" href="#pagination-widget" y="0">
+        <use href="#pagination-dot" />
+        <use href="#pagination-dot" />
+        <use href="#pagination-highlight-dot" />
+      </use>
+    </use>
+  </g>
+  
+<!-- Alert Pop ups -->
+  <g id="alarm-popup" display="none">
+    <!-- Black background -->
+    <rect class="full-size" fill="fb-black" />
+    
+    <!-- Eat Alert Title and text -->
+    <g id="eat-text" display="none">
+      <use href="#mixed-text-center-mid" class="dialog-mixed-text" fill="fb-white">
+        <set href="#top-padding" attributeName="display" to="none" />
+        <set id="text-header" href="#header/text" attributeName="text-buffer" to="Time to Refuel" />
+        <set href="#header/text" attributeName="fill" to="fb-magenta"/>
+        <set href="#copy/text" attributeName="text-buffer" to="Stuff your face!" />
+        <set href="#bottom-padding" attributeName="display" to="none" />
+      </use>
+    </g>
+    
+    <!-- Fast Alert Title and text -->
+    <g id="fast-text" display="none">
+      <use href="#mixed-text-center-mid" class="dialog-mixed-text" fill="fb-white">
+        <set href="#top-padding" attributeName="display" to="none" />
+        <set id="text-header" href="#header/text" attributeName="text-buffer" to="Wrap it up!! (Literally)" />
+        <set href="#header/text" attributeName="fill" to="fb-magenta"/>
+        <set href="#copy/text" attributeName="text-buffer" to="Fasting starts now" />
+        <set href="#bottom-padding" attributeName="display" to="none" />
+      </use>
+    </g>
+    <!-- Left button -->
+    <use id="btn-snooze" class="dialog-half-button-left" href="#square-button-neutral">
+      <set href="#text" attributeName="text-buffer" to="Snooze" />
+      <set href="#text" attributeName="text-anchor" to="middle" />
+    </use>
+    <!-- Right button -->
+    <use id="btn-dismiss" class="dialog-half-button-right" href="#square-button-negative">
+      <set href="#text" attributeName="text-buffer" to="Dismiss" />
+      <set href="#text" attributeName="text-anchor" to="middle" />
+    </use>
+  </g>
+  
+
+  <image href="settingIcon.png" width="40" height="40" x="5" y="5" ></image>
+  <use id="upperleft" href="#combo-button-upper-left" >
+    <set href="combo-button-icon" attributeName="href" to="cog.png"/>
+  </use>  
+</svg>
